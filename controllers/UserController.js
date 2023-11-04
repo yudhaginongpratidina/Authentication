@@ -34,3 +34,22 @@ export const UserRegister = async (req, res) => {
         res.status(500).json({ msg: error.message });
     }
 }
+
+export const UserLogin = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+         
+        if (!email || !password) return res.status(400).json({ msg: "Please fill in all fields" });
+    
+        const user = await Prisma.user.findFirst({ where: { email } });
+    
+        if (!user) return res.status(404).json({ msg: "User not found" });
+    
+        const isMatch = await argon2.verify(user.password, password);
+        if (!isMatch) return res.status(400).json({ msg: "Incorrect password" });
+        
+        res.status(200).json({ msg: "Login success" , user });
+    } catch (error) {
+        res.status(500).json({ msg: error.message });   
+    }
+}

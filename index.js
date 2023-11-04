@@ -1,5 +1,8 @@
 import path from "path";
 import { fileURLToPath } from 'url'
+import swaggerUi from 'swagger-ui-express';
+import YAML from "yamljs";
+const swaggerDocument = YAML.load('./swagger.yaml');
 
 import cors from "cors";
 import dotenv from 'dotenv';
@@ -25,6 +28,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.get('/', (req, res) => res.render('index'));
 
 app.use(UserRoute);
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get('/*', (req, res) => res.redirect('/'));
 

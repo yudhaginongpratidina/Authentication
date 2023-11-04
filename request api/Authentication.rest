@@ -1,0 +1,142 @@
+### ============================================================================
+### TEST API FOR AUTHENTICATION
+### ============================================================================
+
+### ----------------------------------------------------------------------------
+### REGISTER - FIELD KOSONG SEMUA
+### ----------------------------------------------------------------------------
+POST http://localhost:4000/users
+Content-Type: application/json
+
+{
+    "name" : "",
+    "email" : "",
+    "password" : "",
+    "re_password" : "",
+    "role" : ""
+}
+
+### ----------------------------------------------------------------------------
+### REGISTER - FIELD KOSONG SATU
+### ----------------------------------------------------------------------------
+POST http://localhost:4000/users
+Content-Type: application/json
+
+{
+    "name" : "user satu",
+    "email" : "user1@gmail.com",
+    "password" : "user1",
+    "re_password" : ""
+}
+
+### ----------------------------------------------------------------------------
+### REGISTER - FIELD PASSWORD SALAH
+### ----------------------------------------------------------------------------
+POST http://localhost:4000/users
+Content-Type: application/json
+
+{
+    "name" : "user satu",
+    "email" : "user1@gmail.com",
+    "password" : "user1",
+    "re_password" : "user1a",
+    "role" : "admin"
+}
+
+### ----------------------------------------------------------------------------
+### REGISTER - ADMIN
+### ----------------------------------------------------------------------------
+POST http://localhost:4000/users
+Content-Type: application/json
+
+{
+    "name" : "admin satu",
+    "email" : "admin1@gmail.com",
+    "password" : "admin1",
+    "re_password" :"admin1",
+    "role" : "admin"
+}
+
+### ----------------------------------------------------------------------------
+### REGISTER - USER BIASA
+### ----------------------------------------------------------------------------
+POST http://localhost:4000/users
+Content-Type: application/json
+
+{
+    "name" : "user satu",
+    "email" : "user1@gmail.com",
+    "password" : "user1",
+    "re_password" :"user1"
+}
+
+### ----------------------------------------------------------------------------
+### LOGIN - FIELD KOSONG SEMUA
+### ----------------------------------------------------------------------------
+POST http://localhost:4000/users/login
+Content-Type: application/json
+
+{
+    "email" : "",
+    "password" : ""
+}
+
+### ----------------------------------------------------------------------------
+### LOGIN - FIELD KOSONG SATU
+### ----------------------------------------------------------------------------
+POST http://localhost:4000/users/login
+Content-Type: application/json
+
+{
+    "email" : "user1@gmail.com",
+    "password" : ""
+}
+
+### ----------------------------------------------------------------------------
+### LOGIN - FIELD PASSWORD SALAH
+### ----------------------------------------------------------------------------
+POST http://localhost:4000/users/login
+Content-Type: application/json
+
+{
+    "email" : "user1@gmail.com",
+    "password" : "kesehatan"
+}
+
+### ----------------------------------------------------------------------------
+### LOGIN - FIELD EMAIL SALAH
+### ----------------------------------------------------------------------------
+POST http://localhost:4000/users/login
+Content-Type: application/json
+
+{
+    "email" : "userA@gmail.com",
+    "password" : "user1"
+}
+
+### ----------------------------------------------------------------------------
+### LOGIN - USER BIASA
+### ----------------------------------------------------------------------------
+POST http://localhost:4000/users/login
+Content-Type: application/json
+
+{
+    "email" : "user1@gmail.com",
+    "password" : "user1"
+}
+
+### ----------------------------------------------------------------------------
+### LOGIN - ADMIN
+### ----------------------------------------------------------------------------
+POST http://localhost:4000/users/login
+Content-Type: application/json
+
+{
+    "email" : "admin1@gmail.com",
+    "password" : "admin1"
+}
+
+### ----------------------------------------------------------------------------
+### CRUD - GET ALL USER
+### ----------------------------------------------------------------------------
+GET http://localhost:4000/users

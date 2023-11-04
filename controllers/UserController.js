@@ -53,3 +53,12 @@ export const UserLogin = async (req, res) => {
         res.status(500).json({ msg: error.message });   
     }
 }
+
+export const getUsers = async (req, res) => {
+    try {
+        const users = await Prisma.user.findMany();
+        res.status(200).json({ users });
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+}

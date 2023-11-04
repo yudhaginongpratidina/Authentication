@@ -1,5 +1,17 @@
 # Authentication
+| Description            | HTTP Method | End Point              |
+|------------------------|-------------|------------------------|
+| Create User            | POST        | /users                 |
+| User Login             | POST        | /users/login           |
+| Get All Users          | GET         | /users                 |
+| Get User by ID         | GET         | /users/:id             |
+| Get Users by Role      | GET         | /users/role/:role      |
+| Update User            | PATCH       | /users/:id             |
+| Update Role of User    | PATCH       | /users/role/:id        |
+| Delete User            | DELETE      | /users/:id             |
 
+
+## Clone
 ```
 git clone https://github.com/yudhaginongpratidina/Authentication.git
 cd Authentication
@@ -28,3 +40,4 @@ datasource db {
 ```
 npx prisma migrate
 ```
+

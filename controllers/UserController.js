@@ -131,3 +131,15 @@ export const updateRoleUsers = async (req, res) => {
         res.status(500).json({ msg: error.message });
     }
 }
+
+export const deleteUser = async (req, res) => {
+    try {
+        const userExists = await Prisma.user.findFirst({ where: { id: Number(req.params.id) } });
+        if (!userExists) return res.status(404).json({ msg: "User not found" });
+
+        const user = await Prisma.user.delete({ where: { id: Number(req.params.id) } });
+        res.status(200).json({ msg: "User deleted successfully", user });
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+}

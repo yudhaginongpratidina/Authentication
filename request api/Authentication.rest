@@ -150,3 +150,26 @@ GET http://localhost:4000/users/1
 ### CRUD - GET USERS BY ROLE
 ### ----------------------------------------------------------------------------
 GET http://localhost:4000/users/role/user
+
+### ----------------------------------------------------------------------------
+### CRUD - UPDATE USER
+### ----------------------------------------------------------------------------
+PATCH http://localhost:4000/users/2
+Content-Type: application/json
+
+{
+    "name" : "user updated by user",
+    "email" : "user-update@gmail.com",
+    "password" : "user_update",
+    "re_password" : "user_update"
+}
+
+### ----------------------------------------------------------------------------
+### CRUD - UPDATE ROLE
+### ----------------------------------------------------------------------------
+PATCH http://localhost:4000/users/role/2
+Content-Type: application/json
+
+{
+    "role" : "user"
+}

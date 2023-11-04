@@ -62,3 +62,21 @@ export const getUsers = async (req, res) => {
         res.status(500).json({ msg: error.message });
     }
 }
+
+export const getUsersById = async (req, res) => {
+    try {
+        const user = await Prisma.user.findFirst({ where: { id: Number(req.params.id) } });
+        res.status(200).json({ user });
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+}
+
+export const getUsersByRole = async (req, res) => {
+    try {
+        const users = await Prisma.user.findMany({ where: { role: req.params.role } });
+        res.status(200).json({ users });
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+}
